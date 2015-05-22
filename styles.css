@@ -3,3 +3,28 @@
 /* Note: an asteroid image is included in this repo.
 Feel free to use it if you like. */
 
+* {
+  font-family: Arial;
+}
+
+.gameboard {
+  width: 700px;
+  height: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid black;
+}
+
+.scoreboard {
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  height: 30px;
+
+}
+
+.scoreboard div {
+  float: left;
+  width: calc(100% / 3);
+  text-align: center;
+}
