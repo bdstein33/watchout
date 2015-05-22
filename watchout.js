@@ -17,13 +17,26 @@ var axes = {
 
 
 $(document).ready(function(){
-  console.log(axes.x(100));
+  // var user = d3.select('.user');
 
-  var user = d3.select('.user');
-  var gameboard = d3.select('.container')
+  var gameboard =  d3.select('.container')
     .append('svg')
     .attr('width', gameOptions.height + 'px')
     .attr('height', gameOptions.width + 'px');
+
+  var user = gameboard.append('circle')
+    .attr('cx', 20)
+    .attr('cy', 20)
+    .attr('r', 20);
+
+  user.call(d3.behavior.drag().on('drag', function() {
+    move.call(user, d3.event.x, d3.event.y);
+    // user.attr('cx', d3.event.x);
+    // console.log(d);
+    // user.attr('cy', d3.event.y);
+    // console.log(user.attr('cx'));
+    // console.log("A");
+  }));
 
   // d3.select('.gameboard')
   // .select('.user').data([1,2,3])
@@ -37,3 +50,14 @@ $(document).ready(function(){
 
   // );
 });
+
+
+
+
+var move = function(x, y, transition) {
+    this.attr('cx', Math.min(gameOptions.width - this.attr('r'),Math.max(this.attr('r'), x)));
+    this.attr('cy', Math.min(gameOptions.height - this.attr('r'), Math.max(this.attr('r'), y)));
+};
+
+
+
