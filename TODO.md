@@ -1,7 +1,8 @@
 # Color
 
-- HTML Structure
+<!-- - HTML Structure
 - CSS
+ -->
 
 # Collision Detection
 

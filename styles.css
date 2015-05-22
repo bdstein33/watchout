@@ -7,7 +7,7 @@ Feel free to use it if you like. */
   font-family: Arial;
 }
 
-.gameboard {
+.container {
   width: 700px;
   height: 700px;
   margin-left: auto;
@@ -27,4 +27,11 @@ Feel free to use it if you like. */
   float: left;
   width: calc(100% / 3);
   text-align: center;
+}
+
+.user {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: blue;
 }
