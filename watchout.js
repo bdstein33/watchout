@@ -2,6 +2,8 @@ var gameOptions = {
   height: 700,
   width: 700,
   nEnemies: 30,
+  enemyRadius: 20,
+  userRadius: 20
 };
 
 var gameStats = {
@@ -17,7 +19,6 @@ var axes = {
 
 
 $(document).ready(function(){
-  // var user = d3.select('.user');
 
   var gameboard =  d3.select('.container')
     .append('svg')
@@ -27,28 +28,34 @@ $(document).ready(function(){
   var user = gameboard.append('circle')
     .attr('cx', 20)
     .attr('cy', 20)
-    .attr('r', 20);
+    .attr('r', gameOptions.userRadius);
 
+  console.log(user);
   user.call(d3.behavior.drag().on('drag', function() {
     move.call(user, d3.event.x, d3.event.y);
-    // user.attr('cx', d3.event.x);
-    // console.log(d);
-    // user.attr('cy', d3.event.y);
-    // console.log(user.attr('cx'));
-    // console.log("A");
   }));
 
-  // d3.select('.gameboard')
-  // .select('.user').data([1,2,3])
-  // .enter()
-  // .append('svg')
-  // .call(d3.behavior.drag().on('drag', function(d) {
-  //   user.attr('cx', d3.event.x);
-  //   user.attr('cy', d3.event.y);
-  //   console.log(user.attr('cx'));
-  // })
+  var a = d3.select('.container > svg')
+    .selectAll('svg');
 
-  // );
+  d3.select('.container > svg')
+    .selectAll('svg')
+    .data(generateEnemies(20))
+    .enter()
+    .append('circle')
+    .attr('cx', function(d) {
+      return d.x;
+    })
+    // .attr('cy', 200)
+    .style('cy', function(d){
+      return d.y;
+    })
+    .attr('r', gameOptions.enemyRadius + 'px')
+    .attr('fill', 'red');
+
+  // gameboard.select('.enemy')
+  //
+
 });
 
 
@@ -59,5 +66,16 @@ var move = function(x, y, transition) {
     this.attr('cy', Math.min(gameOptions.height - this.attr('r'), Math.max(this.attr('r'), y)));
 };
 
-
+var generateEnemies = function(n) {
+  var enemyArray = [];
+  for (var i = 1; i <= n; i++) {
+    var enemy = {
+      id: i,
+      x: Math.floor(Math.random() * (gameOptions.width - gameOptions.enemyRadius * 2)) + gameOptions.enemyRadius,
+      y: Math.floor(Math.random() * (gameOptions.height - gameOptions.enemyRadius * 2)) + gameOptions.enemyRadius
+    };
+    enemyArray.push(enemy);
+  }
+  return enemyArray;
+};
 
