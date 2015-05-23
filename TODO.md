@@ -10,11 +10,12 @@
 
 # Classes
 
-- Sprite Class SVG
+<!-- - Sprite Class SVG
   - Enemy Subclass
-  - User Subclass
+  - User Subclass -->
 
 # Game Mechanics
 
+- Make moving enemies
 - Tracking current and high score
 - Tracking collisions
