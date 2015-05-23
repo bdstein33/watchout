@@ -2,8 +2,8 @@ var gameOptions = {
   height: 700,
   width: 700,
   nEnemies: 30,
-  enemyRadius: 20,
-  userRadius: 20
+  enemyRadius: 18,
+  userRadius: 18
 };
 
 var gameStats = {
@@ -106,15 +106,20 @@ var enemyMove = function() {
 
 var generateX = function() {
   return Math.floor(Math.random() * (gameOptions.width - gameOptions.enemyRadius * 2)) + gameOptions.enemyRadius;
-}
+};
 
 var generateY = function() {
   return Math.floor(Math.random() * (gameOptions.height - gameOptions.enemyRadius * 2)) + gameOptions.enemyRadius;
-}
+};
 // setinterval every x seconds
 //  invoke tween function that transition to different location and check collision
 //
 //
+
+run();
+setInterval(function() {
+  run();
+}, 2500);
 
 
 
